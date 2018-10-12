@@ -108,6 +108,23 @@ pc1 = &c;
     /* If you execute the above two lines of code, it will give an error, that there is a redeclarartion of variable p1,
     but there is one interesting thing to note here, what the conpiler treats is it fist sees the variabel p1...This is some
     thing unsual, as mydhili ma'am about it.*/
+    int numl1 =10;
+    int numl2 =20;
+    int *ptrl1;
+    int *ptrl2;
+    ptrl1 = &numl1;
+    ptrl2 = &numl2;
+   // printf("%d",ptr2-ptr1); 
+   /* The above statement will not work, this works in the case of an array as it points to consecutive memory
+    locations.*/
+    int arr[3]={0,1,2};
+    int *ptrk1 = arr;
+    int *ptrk2 = arr+2;
+    printf("\nThe value is %d",ptrk2-ptrk1);
+
+    /*This again displays a very interesting fact, that we can directly do pointer subtarction or arithmetic in
+        in general in case of arrays, as it points to the consecutive memory locations.*/
+
 }
 void sum2(int *a1,int *a2,int *t){
     *t = *a1 + *a2;
