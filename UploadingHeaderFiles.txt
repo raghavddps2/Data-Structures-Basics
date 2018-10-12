@@ -1,0 +1,51 @@
+As we all know that files with .h extension are called header files in C. These header files generally contain function declarations which we can be used in our main C program, like for e.g. there is need to include stdio.h in our C program to use function printf() in the program. So the question arises, is it possible to create your own header file?
+
+The answer to the above is yes. header files are simply files in which you can declare your own functions that you can use in your main program or these can be used while writing large C programs.
+NOTE:Header files generally contain definitions of data types, function prototypes and C preprocessor commands.
+
+Below is the short example of creating your own header file and using it accordingly.
+
+
+
+Creating myhead.h : Write the below code and then save the file as myhead.h or you can give any name but the extension should be .h indicating its a header file.
+// It is not recommended to put function definitions  
+// in a header file. Ideally there should be only 
+// function declarations. Purpose of this code is 
+// to only demonstrate working of header files. 
+void add(int a, int b) 
+{ 
+    printf("Added value=%d\n", a + b); 
+} 
+void multiply(int a, int b) 
+{ 
+    printf("Multiplied value=%d\n", a * b); 
+} 
+Including the .h file in other program : Now as we need to include stdio.h as #include in order to use printf() function. We will also need to include the above header file myhead.h as #include”myhead.h”. The ” ” here are used to instructs the preprocessor to look into the present folder and into the standard folder of all header files if not found in present folder. So, if you wish to use angular brackets instead of ” ” to include your header file you can save it in the standard folder of header files otherwise. If you are using ” ” you need to ensure that the header file you created is saved in the same folder in which you will save the C file using this header file.
+Using the created header file :
+// C program to use the above created header file 
+#include <stdio.h> 
+#include "myhead.h" 
+int main() 
+{ 
+    add(4, 6); 
+  
+    /*This calls add function written in myhead.h   
+      and therefore no compilation error.*/
+    multiply(5, 5); 
+  
+    // Same for the multiply function in myhead.h 
+    printf("BYE!See you Soon"); 
+    return 0; 
+
+
+This explains how to create oown functions, store it in a header and use that gain and again.This is agin one of the most imporatnt concepts in c.
+Now why do we use angular brackets in one case and double quotes in another is again a question:
+
+
+ When you use angle brackets, the compiler searches for the file in the include path list. When you use double quotes,
+ it first searches the current directory (i.e. the directory where the module being compiled is) and 
+only then it'll search the include path list.
+
+So, by convention, you use the angle brackets for standard includes and the double quotes for everything else. 
+This ensures that in the (not recommended) case in which you have a local header with the same name as a standard header, 
+the right one will be chosen in each case..
