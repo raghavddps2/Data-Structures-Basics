@@ -16,6 +16,9 @@ void display(struct student *);
 void main(){
     struct student stud1, *ptr_stud1;
     ptr_stud1 = &stud1;
+    //ptr_stud1 = (struct student *)malloc(sizeof(struct student));
+    //The above statement can also be used in place of statement at line 18, this will do the work dynamically.
+    //ptr_stud1 =(struct student *)(malloc(sizeof(struct student)));
     printf("\n---------------Enter the details of the student-------------");
     printf("\nEnter the roll number of the student:\t");
     scanf("%d",&ptr_stud1->roll_no);
