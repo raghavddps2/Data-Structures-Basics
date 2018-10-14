@@ -19,6 +19,8 @@ void main(){
     printf("Enter the number of students");
     scanf("%d",&n);
     for(int i=0;i<n;i++){
+        //ptr_stud[i] = (struct student *)(malloc(sizeof(struct student)));
+        //Even the above statement can be used this will do the work without declaring the stud structure.
         ptr_stud[i] = &stud[i];
         printf("\n---------------Enter the details of the student %d-------------",i+1);
         printf("\nEnter the roll number of the student:\t");
