@@ -17,7 +17,7 @@ void enqueue(int element){
             rear =0;
             queue[rear]=element;
         }
-    else if((front != 0) && (rear = MAX-1) ){
+    else if((front != 0) && (rear == MAX-1) ){
                 rear =0;
                 queue[rear] = element;
     }
@@ -64,7 +64,7 @@ void display(){
     if(front == -1){
         printf("\nQueue is empty");
     }
-    else if(rear>front){
+    else if(rear>=front){
         printf("\nThe elements are: \t");
         for(int i=front;i<=rear;i++){
             printf("%d\t",queue[i]);
@@ -123,4 +123,5 @@ void main(){
         
         }
     }while(option != 5);
+     //printf("Hi");(Show break takes outside of while loop)
 }
