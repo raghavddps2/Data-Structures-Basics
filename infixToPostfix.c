@@ -25,7 +25,7 @@ int isValidInfix(char infix[]){
         else if(isalnum(infix[i])){
             noOfDigits++;
         }
-        else if(infix[i] == '+' || infix[i] == '-' || infix[i] == '*'|| infix[i] == '/'){
+        else if(infix[i] == '+' || infix[i] == '-' || infix[i] == '*'|| infix[i] == '/' || infix[i] == '^'){
             noOfOperations++;
         }
         else{
@@ -46,9 +46,9 @@ void push(char element){
         stack[++top] = element;
     }
 }
-int peak(){
+char peak(){
     if(top == -1){
-        return -1;
+        return '0';
     }
     else{
         return stack[top];
@@ -68,13 +68,15 @@ int priority(char ch){
             return 3;
         case '/':
             return 3;
+		case '^':
+			return 4;
         default:
             return -1;
     }
 }
-int pop(){
+char pop(){
     if(top == -1){
-        return -1;
+        return '0';
     }
     else{
         return (stack[top--]);
@@ -102,7 +104,7 @@ char* infixToPostfix(char infix[],char postfix[]){
             push(infix[i]);
         }
     }
-    while(peak() != -1){
+    while(peak() != '0'){
         postfix[++j] = pop();
     }
     return postfix;
