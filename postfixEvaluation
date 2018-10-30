@@ -35,8 +35,6 @@ int pop(){
 
 int isValidPostfix(char postfix[]){
     int isValidpostfix=1;
-    int noOfOpeningBraces=0;
-    int noOfClosingBraces=0;
     int noOfOperators=0;
     int noOfDigits=0;
     if((isdigit(postfix[0])) && (postfix[1]=='\0')){
@@ -47,23 +45,18 @@ int isValidPostfix(char postfix[]){
     }
     else {
         for(int i=0;postfix[i]!='\0';i++){
-            if(postfix[i] == '('){
-                noOfOpeningBraces++;
-            }
-            else if(postfix[i] == ')'){
-                noOfClosingBraces++;
-            }
-            else if(isdigit(postfix[i])){
+
+            if(isdigit(postfix[i])){
                 noOfDigits++;
             }
-            else if(postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/'){
+            else if(postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/' || postfix[i] == '^'){
                 noOfOperators++;
             }
             else{
                 return (--isValidpostfix);
             }
         }
-        if((noOfOpeningBraces != noOfClosingBraces) || (noOfDigits - noOfOperators != 1)){
+        if((noOfDigits - noOfOperators != 1)){
                 return (--isValidpostfix);
         }
         return (isValidpostfix);
@@ -78,7 +71,7 @@ void postfixEvaluation(char postfix[]){
         if(isdigit(postfix[i])){
             push(postfix[i]-'0');
         }
-        else if(postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/'){
+        else if(postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/' || postfix[i] == '^'){
             int op1 = pop();
             int op2 = pop();
 
@@ -91,6 +84,9 @@ void postfixEvaluation(char postfix[]){
             else if(postfix[i] == '*'){
                 push(op2 * op1);
             }
+			else if(postfix[i] == '^'){
+				push(op2^op1);
+			}
             else{
                 if(op2 == 0 && op1 == 0){
                     isDivideZero = 1;
