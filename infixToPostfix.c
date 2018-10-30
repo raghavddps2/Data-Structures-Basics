@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #define SIZE 40
 
-int stack[SIZE];
+char stack[SIZE];
 int top = -1;
 
 int isValidInfix(char infix[]){
