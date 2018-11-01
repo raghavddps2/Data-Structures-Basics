@@ -10,7 +10,8 @@ int rear = -1;
 */
 
 void enqueue(int element){
-    if((front==0) && (rear == MAX-1))
+    // Added the statement (front == rear + 1), this statement arrives as vijay told...
+    if((front==0 && rear == MAX-1) || (front == rear +1))
         printf("\nOVERFLOW");
     else if(front == -1){
             front =0;
