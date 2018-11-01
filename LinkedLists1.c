@@ -143,11 +143,18 @@ struct node *delete(struct node *start){
     int num;
     printf("Enter the element you wanna delete");
     scanf("%d",&num);
-    while(ptr->data != num){
-        preptr = ptr;
-        ptr = ptr->next;
-        postptr = ptr->next;
+    //Added this statement after getting stuck in the lab test, doesn't worked initially if there are only two statements as the first onw will have no initial pointer.
+    if(ptr->data == num){
+        start = delete_begin(start);
+        return start;
     }
+    else{
+        while(ptr->data != num){
+            preptr = ptr;
+            ptr = ptr->next;
+            postptr = ptr->next;
+        }
+    } 
     preptr->next = postptr; //Learn as to why i wrote like that. This is because, we are like from postptr to preptr, consider it like an arrow.
     free(ptr);
 
