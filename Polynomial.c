@@ -2,16 +2,18 @@
 #include<stdlib.h>
 
 struct node{
-    int coeff;
-    int expo;
+    int coeff; //coefficient of the term of polynomial
+    int expo; //expoment (Power of x)
     struct node *next;
 };
 struct node *start = NULL;
-struct node *start1 = NULL;
-struct node *start2 = NULL;
-struct node *start3 = NULL;
+struct node *start1 = NULL; //For the first polynomial
+struct node *start2 = NULL; //For the second polynomial
+struct node *start3 = NULL; // For the third polynomail
 struct node *ptr = NULL;
 
+
+// Creates the polynomial we want. Gets out when the value is -1.
 struct node *createPoly(struct node *ptr){
         struct node *ptr1;
         ptr1 = ptr;
@@ -55,7 +57,7 @@ struct node *createPoly(struct node *ptr){
         }
         return ptr;
 }
-
+// Supporting function for the addPoly function. Helps in creating the third list!
 struct node *addNode(struct node *start,int val,int expo){
     struct node *ptra;
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
@@ -81,6 +83,7 @@ struct node *addNode(struct node *start,int val,int expo){
     return start;
 }
 
+//Function to display the individual and sum of polynomials.
 void displayPoly(struct node *ptr){
     struct node *ptr2 = ptr;
     while(ptr2 != NULL){
@@ -94,21 +97,23 @@ void displayPoly(struct node *ptr){
         }
     }
 }
+
+//Function to add the polynomials.
 struct node *addPoly(struct node *start3,struct node *start1,struct node *start2){
     struct node *ptr1 = start1;
     struct node *ptr2 = start2;
         while(ptr1 != NULL && ptr2 != NULL){
-            if(ptr1->expo == ptr2->expo){
+            if(ptr1->expo == ptr2->expo){ //Same Expo!
                 start3 = addNode(start3,ptr1->coeff+ptr2->coeff,ptr1->expo);
                 ptr1 = ptr1->next;
                 ptr2 = ptr2->next;
             }
-            else if(ptr1->expo < ptr2->expo){
+            else if(ptr1->expo < ptr2->expo){ //Greater expo for poly 2
                 start3 = addNode(start3,ptr2->coeff,ptr2->expo);
                 ptr2 = ptr2->next;
             }
             
-            else if(ptr1->expo > ptr2->expo){
+            else if(ptr1->expo > ptr2->expo){ //Greater expo for poly 1
                 start3 = addNode(start3,ptr1->coeff,ptr1->expo);
                 ptr1 = ptr1->next;
             }
@@ -129,6 +134,7 @@ struct node *addPoly(struct node *start3,struct node *start1,struct node *start2
         }
         return start3;
 }
+//Function to display the menu.
 void displayMenu(){
     printf("\n------------------------------------------------------");
     printf("\n1. Create the polynomial 1");
@@ -139,6 +145,7 @@ void displayMenu(){
     printf("\n6. EXIT!");
     printf("\n------------------------------------------------------");
 }
+//Menu driven main program.
 int main(){
     
     int choice;
