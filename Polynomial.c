@@ -175,6 +175,7 @@ int main(){
                     break;
             
             case 5:
+                    start3 = NULL; //This line is very important. Try removing the line and see the output when Add button is pressed twice!
                     start3 = addPoly(start3,start1,start2);
                     printf("\nThe addition of the two polynomial is:\t");
                     displayPoly(start3);
