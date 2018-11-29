@@ -84,8 +84,14 @@ struct node *addNode(struct node *start,int val,int expo){
 void displayPoly(struct node *ptr){
     struct node *ptr2 = ptr;
     while(ptr2 != NULL){
-        printf("%dx^%d + ",ptr2->coeff,ptr2->expo);
-        ptr2 = ptr2->next;
+        if(ptr2->next != NULL){
+            printf("%dx^%d + ",ptr2->coeff,ptr2->expo);
+            ptr2 = ptr2->next;
+        }
+        else{
+            printf("%dx^%d ",ptr2->coeff,ptr2->expo);
+            ptr2 = ptr2->next;
+        }
     }
 }
 struct node *addPoly(struct node *start3,struct node *start1,struct node *start2){
