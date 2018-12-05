@@ -50,17 +50,17 @@ void createTree(struct node *root){
 
 void inOrderTraversal(struct node *root){
     if(root != NULL){
-    preOrderTraversal(root->left);
+    inOrderTraversal(root->left);
     printf("%d  ",root->data);
-    preOrderTraversal(root->right);
+    inOrderTraversal(root->right);
     }
 }
 
 void PreOrderTraversal(struct node *root){
     if(root != NULL){
     printf("%d  ",root->data);
-    inOrderTraversal(root->left);
-    inOrderTraversal(root->right);
+    PreOrderTraversal(root->left);
+    PreOrderTraversal(root->right);
     }
 }
 
