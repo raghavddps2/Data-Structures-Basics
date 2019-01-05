@@ -25,7 +25,7 @@ int isValidInfix(char infix[]){
         else if(isalnum(infix[i])){
             noOfDigits++;
         }
-        else if(infix[i] == '+' || infix[i] == '-' || infix[i] == '*'|| infix[i] == '/' || infix[i] == '^'){
+        else if(infix[i] == '+' || infix[i] == '-' || infix[i] == '*'|| infix[i] == '/' || infix[i] == '^' || infix[i] == '%' || infix[i] == '$'){
             noOfOperations++;
         }
         else{
@@ -65,10 +65,12 @@ int priority(char ch){
         case '-':
             return 2;
         case '*':
+        case '%':
             return 3;
         case '/':
             return 3;
 		case '^':
+        case '$':
 			return 4;
         default:
             return -1;
