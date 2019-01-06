@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<malloc.h>
+#include<ctype.h>
 #include<stdlib.h>
 #include<string.h>
 
@@ -71,12 +71,45 @@ void inOrderTraversal(struct tree* node){
         inOrderTraversal(node->right);
     }
 }
+int isValidPostfix(char *postfix)
+{
+    //Checks for the validity of entered single digit postfix expression
+    //Returns 1 if valid, 0 otherwise
+    int noOfDigits = 0, noOfOperations = 0, isValidExpression = 1, i;
+
+    if (isdigit(postfix[0]) && postfix[1] == '\0')
+        return (isValidExpression);
+
+    if (!(isdigit(postfix[0]) && isdigit(postfix[1])))
+        return (--isValidExpression);
+
+    for (i = 0; postfix[i] != '\0'; i++)
+    {
+        if (isdigit(postfix[i]))
+            noOfDigits++;
+        else if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/')
+            noOfOperations++;
+        else
+            return (--isValidExpression);
+    }
+
+    if (noOfDigits - noOfOperations != 1)
+        return (--isValidExpression);
+
+    return (isValidExpression);
+}
 void main(){
 
     char postfix[20];
     int result;
-    printf("\nEnter the postfix expression:\t");
-    scanf("%s",postfix);
+    while (1)
+    {
+        printf("Enter a valid postfix: ");
+        scanf("%s", postfix);
+        if (isValidPostfix(postfix))
+            break;
+        printf("Invalid expression\n");
+    }
 
     for(int i=0;postfix[i] != '\0';i++){
         int ch = check(postfix[i]);
