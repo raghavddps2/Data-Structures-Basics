@@ -8,7 +8,7 @@ int rear = -1;
 /*
     We came with the concept of circular queuessimply because memory was being wasted in linear queue.
 */
-
+/* Function to enter element into a circular queue */
 void enqueue(int element){
     // Added the statement (front == rear + 1), this statement arrives as vijay told...
     if((front==0 && rear == MAX-1) || (front == rear +1))
@@ -27,7 +27,7 @@ void enqueue(int element){
         queue[rear] = element;
     }
 }
-/* Function to enter element into a circular queue */
+
 
 int dequeue(){
     int val;
