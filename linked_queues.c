@@ -20,6 +20,7 @@ void enqueue(int val){
     if(rear == NULL){
         rear = ptr;
         front = ptr;
+        return;
     }
     rear->next = ptr;
     rear = ptr;
